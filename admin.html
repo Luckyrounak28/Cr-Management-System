@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CR Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    
+        header {
+            background-color: rgb(0, 150, 136);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+    
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    
+        .admin-container {
+            display: flex;
+            margin: 20px;
+        }
+    
+        .sidebar {
+            width: 200px;
+            background-color: #810001;
+            padding: 15px;
+            color: white;
+        }
+    
+        .sidebar h2 {
+            color: #fff;
+        }
+    
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+    
+        .sidebar button {
+            background-color: rgb(0, 150, 136);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+    
+        .sidebar button:hover {
+            background-color: rgb(0, 150, 136);
+        }
+    
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: white;
+            margin-left: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .admin-section {
+            display: none;
+        }
+    
+        .admin-section h2 {
+            color: #333;
+        }
+    
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+    
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        button[type="submit"] {
+            background-color: rgb(0, 150, 136);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+    
+        button[type="submit"]:hover {
+            background-color: rgb(0, 150, 136);
+        }
+    
+        footer {
+            background-color: rgb(0, 150, 136);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .socials {
+            margin-top: 10px;
+        }
+    
+        .socials a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>CR Management System - Admin Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact Us</a>
+                <li><a href="about.html">About</a>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="admin-container">
+            <aside class="sidebar">
+                <h2>Admin Dashboard</h2>
+                <ul>
+                    <li><button onclick="showSection('manageStudents')">Manage Students</button></li>
+                    <li><button onclick="showSection('manageComplaints')">Manage Complaints</button></li>
+                    <li><button onclick="showSection('manageAttendance')">Manage Attendance</button></li>
+                    <li><button onclick="showSection('manageNotes')">Manage Notes</button></li>
+                    <li><button onclick="showSection('adminSettings')">Admin Settings</button></li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <!-- Manage Students Section -->
+                <div id="manageStudents" class="admin-section">
+                    <h2>Manage Students</h2>
+                    <form id="manageStudentsForm">
+                        <label for="courseManage">Course:</label>
+                        <select id="courseManage" required>
+                            <option value="">Select Course</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="M.Tech">M.Tech</option>
+                            <option value="MBA">MBA</option>
+                            <option value="BBA">BBA</option>
+                            <option value="BCA">BCA</option>
+                            <option value="MCA">MCA</option>
+                        </select>
+
+                        <label for="branchManage">Branch:</label>
+                        <select id="branchManage" required>
+                            <option value="">Select Branch</option>
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="ME">ME</option>
+                            <option value="CE">CE</option>
+                            <option value="EE">EE</option>
+                            <option value="IT">IT</option>
+                        </select>
+
+                        <label for="yearManage">Year:</label>
+                        <select id="yearManage" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+
+                        <label for="sectionManage">Section:</label>
+                        <select id="sectionManage" required>
+                            <option value="">Select Section</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                            <option value="I">I</option>
+                        </select>
+
+                        <label for="studentNameManage">Student Name:</label>
+                        <input type="text" id="studentNameManage" required>
+
+                        <label for="rollNumberManage">Roll Number:</label>
+                        <input type="text" id="rollNumberManage" required>
+
+                        <button type="submit">Update Student Information</button>
+                    </form>
+
+                    <div id="studentListAdmin"></div>
+                </div>
+
+                <!-- Manage Complaints Section -->
+                <div id="manageComplaints" class="admin-section" style="display: none;">
+                    <h2>Manage Complaints</h2>
+                    <div id="complaintsList">
+                        <!-- Complaints will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Manage Attendance Section -->
+                <div id="manageAttendance" class="admin-section" style="display: none;">
+                    <h2>Manage Attendance</h2>
+                    <div id="attendanceList">
+                        <!-- Attendance details will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Manage Notes Section -->
+                <div id="manageNotes" class="admin-section" style="display: none;">
+                    <h2>Manage Notes</h2>
+                    <div id="notesList">
+                        <!-- Notes will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Admin Settings Section -->
+                <div id="adminSettings" class="admin-section" style="display: none;">
+                    <h2>Admin Settings</h2>
+                    <form id="adminSettingsForm">
+                        <label for="adminUsernameSetting">Admin Username:</label>
+                        <input type="text" id="adminUsernameSetting" required>
+
+                        <label for="adminPasswordSetting">Admin Password:</label>
+                        <input type="password" id="adminPasswordSetting" required>
+
+                        <button type="submit">Update Settings</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <h3>Ambalika Institute of Management and Technology</h3>
+            <p>Address: Mohanlalganj, Lucknow, Uttar Pradesh 226301</p>
+            <div class="socials">
+                <a href="https://facebook.com/ambalika" target="_blank">Facebook</a> |
+                <a href="https://twitter.com/ambalika" target="_blank">Twitter</a> |
+                <a href="https://linkedin.com/school/ambalika-institute" target="_blank">LinkedIn</a> |
+                <a href="https://instagram.com/ambalika" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to show specific admin section
+        function showSection(section) {
+            document.querySelectorAll('.admin-section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+
+        // Manage Students Form Submission
+        document.getElementById('manageStudentsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let course = document.getElementById('courseManage').value;
+            let branch = document.getElementById('branchManage').value;
+            let year = document.getElementById('yearManage').value;
+            let section = document.getElementById('sectionManage').value;
+            let studentName = document.getElementById('studentNameManage').value;
+            let rollNumber = document.getElementById('rollNumberManage').value;
+
+            // Logic to update student information
+            alert(`Student ${studentName} updated successfully!`);
+
+            // Add updated student to student list
+            let studentListAdmin = document.getElementById('studentListAdmin');
+            studentListAdmin.innerHTML += `<p>${studentName} (${rollNumber}) - ${course}, ${branch}, ${year}, Section ${section}</p>`;
+        });
+
+        // Admin Settings Form Submission
+        document.getElementById('adminSettingsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let adminUsername = document.getElementById('adminUsernameSetting').value;
+            let adminPassword = document.getElementById('adminPasswordSetting').value;
+
+            // Logic to update admin settings
+            alert(`Admin settings updated! Username: ${adminUsername}`);
+        });
+    </script>
+</body>
+</html>
